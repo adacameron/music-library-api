@@ -1,0 +1,25 @@
+{
+  "name": "music-library-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adacameron/music-library-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adacameron/music-library-api/issues"
+  },
+  "homepage": "https://github.com/adacameron/music-library-api#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "eslint": "^7.32.0"
+  }
+}
