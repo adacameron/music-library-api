@@ -12,29 +12,30 @@ describe('create artist', () => {
   // stores connection as db
 
   afterEach(async () => {
+    await db.query(`SET FOREIGN_KEY_CHECKS = 0`);
     await db.query('DELETE FROM Artist');
-    await db.close();
-  });
+    // deletes all records in Artist table after tests run
 
-  // deletes all records in Artist table after tests run
-  // closes db connection
+    await db.close();
+    // closes db connection
+  });
 
   describe('/artist', () => {
     describe('POST', () => {
       it('creates a new artist in the database', async () => {
         const res = await request(app).post('/artist').send({
-          name: 'Tame Impala',
-          genre: 'rock',
+          name: 'Joanna Gruesome',
+          genre: 'noise pop'
         });
 
         expect(res.status).to.equal(201);
 
         const [[artistEntries]] = await db.query(
-          `SELECT * FROM Artist WHERE name = 'Tame Impala'`
+          `SELECT * FROM Artist WHERE name = 'Joanna Gruesome'`
         );
 
-        expect(artistEntries.name).to.equal('Tame Impala');
-        expect(artistEntries.genre).to.equal('rock');
+        expect(artistEntries.name).to.equal('Joanna Gruesome');
+        expect(artistEntries.genre).to.equal('noise pop');
       });
     });
   });
