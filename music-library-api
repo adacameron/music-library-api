@@ -11,50 +11,31 @@ describe('create album', () => {
     beforeEach(async () => {
 
         db = await getDb();
-        // await db.query(
-        //     `INSERT INTO Artist (name, genre) VALUES ('Ride', 'shoegaze')`
-        // )
 
-        const [result] = await db.query (
+        const [result] = await db.query(
             'INSERT INTO Artist (name, genre) VALUES (?, ?)', [
             'Ride',
             'shoegaze'
         ]);
-
-        // console.log({result})
-
         artistId = result.insertId;
-        // console.log({ artistId })
 
     });
 
-
     afterEach(async () => {
         await db.query(`SET FOREIGN_KEY_CHECKS = 0`);
-        //  Do not check foreign key constraints
         await db.query('DELETE FROM Artist');
         await db.query('DELETE FROM Album');
         await db.close();
     });
 
-
     describe('/artist/:artistId/album', () => {
         describe('POST', () => {
             it('creates a new album in the database', async () => {
-             
-
-
-                // await db.query(`SELECT * FROM Artist WHERE name = 'Ride'`);
-
-
                 const res = await request(app).post(`/artist/${artistId}/album`).send(
                     {
                         name: 'Nowhere',
                         year: '1990'
                     });
-                
-                
-
 
                 expect(res.status).to.equal(201);
 
@@ -63,7 +44,6 @@ describe('create album', () => {
                 );
                 expect(albumEntries.name).to.equal('Nowhere');
                 expect(albumEntries.year).to.equal(1990);
-                // expect(albumEntries.artistId)to.equal(artistId)
             });
         });
     });

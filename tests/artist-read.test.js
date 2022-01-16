@@ -26,7 +26,6 @@ describe('read artist', () => {
     ]);
 
     [artists] = await db.query('SELECT * from Artist');
-    // console.log('ARTIST READ TEST', [artists], 'ARTIST READ TEST')
   });
 
   afterEach(async () => {
@@ -41,17 +40,11 @@ describe('read artist', () => {
         const res = await request(app).get('/artist').send();
 
         expect(res.status).to.equal(200);
-        // 200 is successful HTTP GET
 
         expect(res.body.length).to.equal(3);
 
         res.body.forEach((artistRecord) => {
           const expected = artists.find((a) => a.id === artistRecord.id);
-
-                                // console.log('ARTIST READ TEST', {artistRecord})
-
-                                // console.log('ARTIST READ TEST', {artistRecord.id})
-
           expect(artistRecord).to.deep.equal(expected);
         });
       });
@@ -62,7 +55,6 @@ describe('read artist', () => {
     describe('GET', () => {
       it('returns a single artist with the correct id', async () => {
         const expected = artists[0];
-                                // console.log('ARTIST READ TEST', { expected } )
         const res = await request(app).get(`/artist/${expected.id}`).send();
 
         expect(res.status).to.equal(200);

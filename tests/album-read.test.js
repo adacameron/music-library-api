@@ -26,8 +26,6 @@ describe('read album', () => {
         ]),
 
             [albums] = await db.query('SELECT * from Album');
-
-                                // console.log('ALBUM READ TEST', { albums })
     });
 
     afterEach(async () => {

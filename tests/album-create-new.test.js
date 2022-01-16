@@ -17,16 +17,11 @@ describe('create album', () => {
             'Ride',
             'shoegaze'
         ]);
-                                 // console.log({ artistInsert })
-
         artistId = artistInsert.insertId;
-                                // console.log({ artistId })
-
     });
 
     afterEach(async () => {
         await db.query(`SET FOREIGN_KEY_CHECKS = 0`);
-        //  Do not check foreign key constraints
         await db.query('DELETE FROM Artist');
         await db.query('DELETE FROM Album');
         await db.close();
@@ -41,15 +36,11 @@ describe('create album', () => {
                         year: 1990
                     });
 
-                                // console.log({ res })
-
                 expect(res.status).to.equal(201);
 
                 const [[albumEntries]] = await db.query(
                     `SELECT * FROM Album WHERE artistId = ${artistId}`
                 );
-
-                                // console.log({ albumEntries })
 
                 expect(albumEntries.name).to.equal('Nowhere');
                 expect(albumEntries.year).to.equal(1990);

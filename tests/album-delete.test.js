@@ -45,11 +45,8 @@ describe('delete album', () => {
 
                 [albums] = await db.query('SELECT * from Album');
 
-                              // console.log('DELETE TEST - albums', [albums])
-
                 const album = albums[0];
-                              // console.log('DELETE TEST', { album })
-
+                
                 const res = await request(app).delete(`/album/artist/${artistId}`).send();
 
                 expect(res.status).to.equal(200);

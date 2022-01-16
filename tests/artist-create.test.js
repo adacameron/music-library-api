@@ -8,16 +8,10 @@ describe('create artist', () => {
   let db;
   beforeEach(async () => (db = await getDb()));
 
-  // connects to the db before each test
-  // stores connection as db
-
   afterEach(async () => {
     await db.query(`SET FOREIGN_KEY_CHECKS = 0`);
     await db.query('DELETE FROM Artist');
-    // deletes all records in Artist table after tests run
-
     await db.close();
-    // closes db connection
   });
 
   describe('/artist', () => {

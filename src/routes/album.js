@@ -10,16 +10,6 @@ router.get('/artist/:artistId', albumController.readById);
 router.delete('/artist/:artistId', albumController.delete);
 router.patch('/artist/:artistId', albumController.update);
 
-// album read route in test:
-//      /album
-// in route.js
-//      /
-
-// album post route in test:
-//      /album/artist/${id}
-//  in route.js
-//             /artist/:artistId
-
 module.exports = router;
 
 
